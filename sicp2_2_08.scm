@@ -30,8 +30,9 @@
                  /   \
              right   nil
 
-    Keep in mind that left and right are themselves nodes of this form or nils
-    whereas mid is either nil or a list of identical values (for example (cons 1 (cons 1 (cons 1 nil)))
+    Keep in mind that left, mid, and right are themselves nodes of this form or nils.
+    (Admitedly, mid could be represented as either nil or a list of identical values
+    such as (cons 1 (cons 1 (cons 1 nil))) )
 
     Included below are methods for constructing and displaying a trinary
     search tree. Parent-mid-child links are emphasized with arrows whereas
