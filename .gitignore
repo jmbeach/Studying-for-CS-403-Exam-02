@@ -1,3 +1,5 @@
 .scam_history
 .DS_Store
 *.gdraw
+*.iml
+*.xml
