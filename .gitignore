@@ -3,3 +3,4 @@
 *.gdraw
 *.iml
 *.xml
+.idea/*
