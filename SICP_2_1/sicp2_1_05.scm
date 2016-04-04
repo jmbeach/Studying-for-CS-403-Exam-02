@@ -36,8 +36,9 @@
 
 (define (cons a b) (* (^ 2 a) (^ 3 b)))
 
-;Answer A
+;Answer A (Basically the right answer, but contains a syntax error)
 (define (a-car x) (if (!= (% x 3)) 0) (ilog 2 x) (a-car (/ x 3)))
+(define (a-car2 x) (if (!= (% x 3) 0) (ilog 2 x) (a-car2 (/ x 3)))) ;Modified to work as car
 
 ;Answer B
 (define (b-car x) (ilog x 2))
@@ -47,18 +48,17 @@
 
 ;Answer D
 (define (d-car x)  (if  (= (% x 2) 0) (ilog 3 x) (d-car (/ x 2))))  ;Answer from quiz (still wrong)
-(define (d-car2 x) (if (!= (% x 3) 0) (ilog 2 x) (d-car2 (/ x 3)))) ;Modified to work as car
 (define (d-cdr x)  (if (!= (% x 2) 0) (ilog 3 x) (d-cdr (/ x 2))))  ;Modified to work as cdr
 
 
 (define a (cons 2 9))
 (define b (cons 7 3))
-;(exprTest (a-car a) 1) ;Causes Stack overflow. Infinite recursion?
+;(exprTest (a-car a) 2) ;Causes Stack overflow. Infinite recursion?
 ;(exprTest (b-car a) 1) ;Causes Stack overflow. Infinite recursion?
 ;(exprTest (c-car a) 1) ;Causes Stack overflow. Infinite recursion?
 (exprTest (d-car a) 2)  ;Still does not work correctly
 
-(exprTest (d-car2 a) 2) ;Working car
+(exprTest (a-car2 a) 2) ;Working car
 (exprTest (d-cdr a) 9)  ;Working cdr
-(exprTest (d-car2 b) 7)
+(exprTest (a-car2 b) 7)
 (exprTest (d-cdr  b) 3)
