@@ -46,3 +46,19 @@
         (else (findDivisor n (+ 1 testDivisor)))))
 (define (smallestDivisor n) (findDivisor n 2))
 (define (prime? n) (= n (smallestDivisor n)))
+
+;From SICP 2.2 11
+(define (flatten lyst)
+    (cond
+        ((null? lyst) nil)
+        ((pair? (car lyst)) (append (flatten (car lyst)) (flatten (cdr lyst))))
+        (else (append (list (car lyst)) (flatten (cdr lyst))))))
+        
+;From SICP 2.2 22
+(define (list? x)
+    (define (iter src)
+        (cond
+            ((null? (cdr src)) #t)
+            ((pair? (cdr src)) (iter (cdr src)))
+            (else #f)))
+    (iter x))
