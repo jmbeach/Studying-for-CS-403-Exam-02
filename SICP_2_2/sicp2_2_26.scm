@@ -9,7 +9,8 @@
 
     Question 26:
     - Define a function named oddCount that returns the number of elements in a
-    given list that are odd. The list does not have any sub-lists.
+    given list that are odd.
+    - The list does not have any sub-lists.
     - You must use the predefined predicate function even?.
     - Do not perform any error checking.
 
