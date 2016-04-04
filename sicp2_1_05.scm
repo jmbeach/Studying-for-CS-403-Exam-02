@@ -34,27 +34,31 @@
 (define (ilog b d)
     (round (/ (log d) (log b)))) ;round( log_b(d) )
 
-(define (cons a b) (* (^ 2 a) (^ 2 b)))
+(define (cons a b) (* (^ 2 a) (^ 3 b)))
 
-;Answer A (with paren typo removed)
-(define (a-car x) (if (= (% x 2) 0) 0 (+ 1 (a-car (/ x 2)))))
+;Answer A
+(define (a-car x) (if (!= (% x 3)) 0) (ilog 2 x) (a-car (/ x 3)))
 
 ;Answer B
-(define (b-car x) (if (= (% x 2) 0) (ilog 3 x) (b-car (/ x 2))))
+(define (b-car x) (ilog x 2))
 
 ;Answer C
-(define (c-car x) (ilog x 2))
+(define (c-car x) (if (= (% x 2)) 0) 0 (+ 1 (c-car (/ x 2))))
 
-;Answer D (with paren typo removed)
-(define (d-car x) (if (!= (% x 3) 0) (ilog 2 x) (d-car (/ x 3))))
+;Answer D
+(define (d-car x)  (if  (= (% x 2) 0) (ilog 3 x) (d-car (/ x 2))))  ;Answer from quiz (still wrong)
+(define (d-car2 x) (if (!= (% x 3) 0) (ilog 2 x) (d-car2 (/ x 3)))) ;Modified to work as car
+(define (d-cdr x)  (if (!= (% x 2) 0) (ilog 3 x) (d-cdr (/ x 2))))  ;Modified to work as cdr
 
 
-;{
-    It appears that none of the provided answers work correctly
-;}
-(define a (cons 1 9))
-(println "Attempting to take car of " '(1 . 9))
-(exprTest (a-car a) 3)
-(exprTest (b-car a) 3)
-(exprTest (c-car a) 3)
-(exprTest (d-car a) 3)
+(define a (cons 2 9))
+(define b (cons 7 3))
+;(exprTest (a-car a) 1) ;Causes Stack overflow. Infinite recursion?
+;(exprTest (b-car a) 1) ;Causes Stack overflow. Infinite recursion?
+;(exprTest (c-car a) 1) ;Causes Stack overflow. Infinite recursion?
+(exprTest (d-car a) 2)  ;Still does not work correctly
+
+(exprTest (d-car2 a) 2) ;Working car
+(exprTest (d-cdr a) 9)  ;Working cdr
+(exprTest (d-car2 b) 7)
+(exprTest (d-cdr  b) 3)
