@@ -16,7 +16,7 @@
     http://beastie.cs.ua.edu/proglan/2-2.html
 ;}
 (include "exprTest.scm")
-(include "sicp2_2_13.scm")
+(include "../sequenceHelpers.scm")
 
 ;Returns a list of all nonprimes on the interval [1,n]
 (define (enumerateNonPrimes n)
