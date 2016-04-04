@@ -1,6 +1,7 @@
 ;{
     Mitchell Griest
     Jacob Zarobsky
+    Dillon Wastrack
     The University of Alabama
     Spring 2016
     CS 403 Programming Languages
