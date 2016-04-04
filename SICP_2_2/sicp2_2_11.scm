@@ -17,6 +17,7 @@
     (a b c).
     - You may find the functions pair? or atom? useful.
 
+    http://beastie.cs.ua.edu/proglan/2-2.html
 ;}
 (include "exprTest.scm")
 
