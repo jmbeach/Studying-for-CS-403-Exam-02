@@ -1,5 +1,6 @@
 ;{
     Mitchell Griest
+    Jacob Zarobsky
     The University of Alabama
     Spring 2016
     CS 403 Programming Languages
@@ -21,12 +22,15 @@
 ;}
 (include "exprTest.scm")
 
-;From the textbook
-(define (apply-generic op . args)
- (let ((type-tags (map type-tag args)))
- (let ((proc (get op type-tags)))
- (if proc
-     (apply proc (map contents args))
-     (error
-         "No method for these types -- APPLY-GENERIC"
-         (list op type-tags))))))
+; From Page 187 of the text
+; It's variadic, but it's the model for our actual answer below.
+(define (apply-generic-1 op arg)
+    (arg op)
+)
+
+; Apply generic for binary operators in which operands are message
+; passing procedures.
+(define (apply-generic op a b)
+    ((a op) b)
+)
+
