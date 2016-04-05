@@ -32,7 +32,7 @@
     Of those available, I would choose this implementation with the hope
     that p had the form '(** exponent base)
 ;}
-(define (exponent2 p) (cadr p)
+(define (exponent2 p) (cadr p))
 
 (define a '(** 2 3))
 (define b '(^ 2 3))
