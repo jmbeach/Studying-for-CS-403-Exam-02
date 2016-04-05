@@ -34,21 +34,26 @@
 (define (ilog b d)
     (round (/ (log d) (log b)))) ;round( log_b(d) )
 
+;@ cons is (2^a) * (3^b)
 (define (cons a b) (* (^ 2 a) (^ 3 b)))
 
 ;@ He moved all the answers around for some ungodly reason
-;@ Answer C (The right answer)
-(define (c-car x) (if (!= (% x 3) 0) (ilog 2 x) (c-car (/ x 3))))
 
 ;Answer A
 (define (a-car x) (ilog x 2))
 
-;Answer D
-(define (d-car x) (if (= (% x 2)) 0) 0 (+ 1 (d-car (/ x 2))))
-
 ;Answer B
 (define (b-car x)  (if  (= (% x 2) 0) (ilog 3 x) (b-car (/ x 2))))  ;Answer from quiz (still wrong)
 (define (b-cdr x)  (if (!= (% x 2) 0) (ilog 3 x) (b-cdr (/ x 2))))  ;Modified to work as cdr
+
+; Answer C (The right answer)
+;@ if x is not divisible by 3, return log_2(x)
+;@  means no cdr or we've recured until the cdr was gone
+;@ otherwise keep dividing by 3 until the cdr is gone
+(define (c-car x) (if (!= (% x 3) 0) (ilog 2 x) (c-car (/ x 3))))
+
+;Answer D
+(define (d-car x) (if (= (% x 2)) 0) 0 (+ 1 (d-car (/ x 2))))
 
 
 (define a (cons 2 9))
