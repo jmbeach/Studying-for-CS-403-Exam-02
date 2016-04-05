@@ -14,6 +14,8 @@
 (define (variable? x) (symbol? x))
 (define (same-variable? v1 v2) (and (variable? v1) (variable v2) (eq? v1 v2)))
 (define (sum? x) (eq? (car x) '+))
+;NOTE: The book appears to have these flipped, we left them but note that
+; the augend is the quantity to which the addend is added
 (define (addend s) (cadr s))
 (define (augend s) (caddr s))
 (define (product? x) (eq? (car x) '*))

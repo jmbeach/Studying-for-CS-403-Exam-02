@@ -15,24 +15,6 @@
 
     http://beastie.cs.ua.edu/proglan/2-3.html
 
-    Based on https://wqzhang.wordpress.com/2009/06/24/sicp-exercise-2-56/
-    we are inclined to go with answer C, but certainly would like some
-    clarification.
+    When the expression has a base of zero (assuming the exponent is not also
+    zero), simply return 0 (since 0^n = 0 for all n != 0)
 ;}
-(include "exprTest.scm")
-
-;Answer C formatted for clarity
-(make-product
-    (make-product
-        (exponent p)
-        (make-exponentiation
-            (base p)
-            (- (exponent p) 1)))
-    (derive (base p) var))
-
-;Answer D formatted for clarity
-(make-product
-    (exponent p)
-    (make-exponentiation
-        (base p)
-        (- (exponent p) 1)))
