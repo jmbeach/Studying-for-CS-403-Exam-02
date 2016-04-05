@@ -30,3 +30,8 @@
      (error
          "No method for these types -- APPLY-GENERIC"
          (list op type-tags))))))
+
+; From Page 187 of the text
+(define (apply-generic op arg)
+    (arg op)
+)
