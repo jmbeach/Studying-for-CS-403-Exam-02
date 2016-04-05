@@ -36,29 +36,29 @@
 
 (define (cons a b) (* (^ 2 a) (^ 3 b)))
 
-;Answer A (Basically the right answer, but contains a syntax error)
-(define (a-car x) (if (!= (% x 3)) 0) (ilog 2 x) (a-car (/ x 3)))
-(define (a-car2 x) (if (!= (% x 3) 0) (ilog 2 x) (a-car2 (/ x 3)))) ;Modified to work as car
+;@ He moved all the answers around for some ungodly reason
+;@ Answer C (The right answer)
+(define (c-car x) (if (!= (% x 3) 0) (ilog 2 x) (c-car (/ x 3))))
 
-;Answer B
-(define (b-car x) (ilog x 2))
-
-;Answer C
-(define (c-car x) (if (= (% x 2)) 0) 0 (+ 1 (c-car (/ x 2))))
+;Answer A
+(define (a-car x) (ilog x 2))
 
 ;Answer D
-(define (d-car x)  (if  (= (% x 2) 0) (ilog 3 x) (d-car (/ x 2))))  ;Answer from quiz (still wrong)
-(define (d-cdr x)  (if (!= (% x 2) 0) (ilog 3 x) (d-cdr (/ x 2))))  ;Modified to work as cdr
+(define (d-car x) (if (= (% x 2)) 0) 0 (+ 1 (d-car (/ x 2))))
+
+;Answer B
+(define (b-car x)  (if  (= (% x 2) 0) (ilog 3 x) (b-car (/ x 2))))  ;Answer from quiz (still wrong)
+(define (b-cdr x)  (if (!= (% x 2) 0) (ilog 3 x) (b-cdr (/ x 2))))  ;Modified to work as cdr
 
 
 (define a (cons 2 9))
 (define b (cons 7 3))
-;(exprTest (a-car a) 2) ;Causes Stack overflow. Infinite recursion?
-;(exprTest (b-car a) 1) ;Causes Stack overflow. Infinite recursion?
-;(exprTest (c-car a) 1) ;Causes Stack overflow. Infinite recursion?
-(exprTest (d-car a) 2)  ;Still does not work correctly
+(exprTest (a-car a) 2) ;Causes Stack overflow. Infinite recursion?
+(exprTest (a-car b) 7) ;Causes Stack overflow. Infinite recursion?
+(exprTest (b-car a) 1) ;Causes Stack overflow. Infinite recursion?
+(exprTest (c-car a) 2) ;Causes Stack overflow. Infinite recursion?
+(exprTest (c-car b) 7) ;Causes Stack overflow. Infinite recursion?
+;@ (exprTest (d-car a) 2)  ;Still does not work correctly
 
-(exprTest (a-car2 a) 2) ;Working car
-(exprTest (d-cdr a) 9)  ;Working cdr
-(exprTest (a-car2 b) 7)
-(exprTest (d-cdr  b) 3)
+(exprTest (b-cdr a) 9)  ;Working cdr
+(exprTest (b-cdr  b) 3)
