@@ -31,6 +31,23 @@
 
 ;Takes two rational numbers and returns a simplified rational number
 ;(Could be expressed in one line, but expanded for readability)
+;{
+Math of creating rational from two rationals:
+
+n=r-num, d=r-denom
+
+       nn            nd
+r-num= -- , r-denom= -- ,
+       dd            dd
+
+                 nn
+                 --
+     r-num       dn    nn   dd   nn(dd)
+rat= -------- = ---- = -- * -- = ------
+     r-denom     nd    dd   nd   dn(nd)
+                 --
+                 dd
+;}
 (define (make-rat n d)
     (define nn (num n))
     (define dn (denom n))
