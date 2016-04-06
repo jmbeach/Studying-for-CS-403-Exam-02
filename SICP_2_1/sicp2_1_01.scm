@@ -67,6 +67,7 @@
 (exprTest (pair-make-rat a b) '(35 . 6))
 (exprTest (pair-make-rat a c) '(7 . 15))
 (exprTest (pair-make-rat a d) '(1 . 3))
+(exprTest (pair-make-rat c d) '(5 . 7))
 
 (exprTest (int-make-rat a b) '(35 . 6))
 (exprTest (int-make-rat a c) '(7 . 15))

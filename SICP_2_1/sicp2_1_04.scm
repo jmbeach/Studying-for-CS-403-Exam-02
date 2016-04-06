@@ -15,9 +15,15 @@
 
     http://beastie.cs.ua.edu/proglan/2-1.html
 ;}
+
+
 (include "exprTest.scm")
+;@ cons returns a function which calls a function
+;@  which accepts parameters a and b
 (define (cons a b) (lambda (w) (w a b)))
 
+;@ car has to call the cons cell and pass a function which takes 2
+;@  params
 (define (car c) (c (lambda (x y) x))) ;Answer B is correct
 (define (cdr c) (c (lambda (x y) y))) ;Here is what cdr would look like
 
